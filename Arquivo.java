@@ -26,7 +26,7 @@ public class Arquivo<T extends Registro> {
     int novoID = ultimoID + 1;
     arq.seek(0);
     arq.writeInt(novoID);
-    entidade.setID(novoID);
+    entidade.setId(novoID);
 
     // Encontra o ponto de escrita do novo registro
     arq.seek(arq.length());
@@ -54,7 +54,7 @@ public class Arquivo<T extends Registro> {
       arq.read(ba);
       if (lapide == ' ') {
         entidade.fromByteArray(ba);
-        if (entidade.getID() == id)
+        if (entidade.getId() == id)
           return entidade;
       }
     }
