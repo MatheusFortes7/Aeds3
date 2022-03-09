@@ -1,86 +1,60 @@
-package com.company;
-
 
 import java.io.*;
 
 public class Livro implements Registro{
 
-    String nome;
-    String autor;
-    float preco;
-    int id;
+    int ID;
+  String titulo;
+  String autor;
+  float preco;
 
-    public Livro(){
-        this("","",00F,-1);
-    }
+  public Livro() {
+    this(-1, "", "", 0F);
+  }
 
-    public Livro(String nome, String autor, float preco) {
-        this( nome, autor, preco, -1);
-    }
+  public Livro(String t, String a, float p) {
+    this(-1, t, a, p);
+  }
 
-    public Livro(String nome, String autor, float preco, int id) {
-        this.nome = nome;
-        this.autor = autor;
-        this.preco = preco;
-        this.id = id;
-    }
+  public Livro(int i, String t, String a, float p) {
+    this.ID = i;
+    this.titulo = t;
+    this.autor = a;
+    this.preco = p;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public int getId() {
+    return this.ID;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public void setId(int i) {
+    this.ID = i;
+  }
 
-    public String getAutor() {
-        return autor;
-    }
+  public byte[] toByteArray() throws Exception {
+    ByteArrayOutputStream ba_out = new ByteArrayOutputStream();
+    DataOutputStream dos = new DataOutputStream(ba_out);
+    dos.writeInt(this.ID);
+    dos.writeUTF(this.titulo);
+    dos.writeUTF(this.autor);
+    dos.writeFloat(this.preco);
+    return ba_out.toByteArray();
+  }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
+  public void fromByteArray(byte[] ba) throws Exception {
+    ByteArrayInputStream ba_in = new ByteArrayInputStream(ba);
+    DataInputStream dis = new DataInputStream(ba_in);
+    this.ID = dis.readInt();
+    this.titulo = dis.readUTF();
+    this.autor = dis.readUTF();
+    this.preco = dis.readFloat();
+  }
 
-    public float getPreco() {
-        return preco;
-    }
+  public String toString() {
+    return "\nID: " + this.ID +
+        "\nTítulo: " + this.titulo +
+        "\nAutor: " + this.autor +
+        "\nPreço: R$ " + this.preco;
+  }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int Id) {
-        this.id = Id;
-    }
-
-    public byte[] toByteArray() throws Exception {
-        ByteArrayOutputStream ba_out = new ByteArrayOutputStream();
-        DataOutputStream dos = new DataOutputStream(ba_out);
-        dos.writeInt(this.id);
-        dos.writeUTF(this.nome);
-        dos.writeUTF(this.autor);
-        dos.writeFloat(this.preco);
-        return ba_out.toByteArray();
-    }
-
-    public void fromByteArray(byte[] ba) throws Exception{
-        ByteArrayInputStream ba_in = new ByteArrayInputStream(ba);
-        DataInputStream dis = new DataInputStream(ba_in);
-        this.id = dis.readInt();
-        this.nome = dis.readUTF();
-        this.autor = dis.readUTF();
-        this.preco = dis.readFloat();
-    }
-
-    @Override
-    public String toString() {
-        return  "nome='" + nome + '\'' +
-                ", autor='" + autor + '\'' +
-                ", preco=" + preco +
-                ", ID=" + id;
-    }
 }
