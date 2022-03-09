@@ -1,4 +1,3 @@
-package com.company;
 
 public interface Registro {
     public int getId();
