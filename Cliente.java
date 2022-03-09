@@ -1,4 +1,3 @@
-package com.company;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -6,71 +5,52 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 public class Cliente implements Registro{
-    int Id;
-    String nome;
-    String email;
+    int ID;
+  String nome;
+  String email;
 
-    public Cliente() {
-        this(-1,"","");
-    }
+  public Cliente() {
+    this(-1, "", "");
+  }
 
-    public Cliente(String nome, String email) {
-        this(-1, nome, email);
-    }
+  public Cliente(String n, String e) {
+    this(-1, n, e);
+  }
 
-    public Cliente(int ID, String nome, String email) {
-        this.Id = ID;
-        this.nome = nome;
-        this.email = email;
-    }
+  public Cliente(int i, String n, String e) {
+    this.ID = i;
+    this.nome = n;
+    this.email = e;
+  }
 
-    public int getId() {
-        return Id;
-    }
+  public int getId() {
+    return this.ID;
+  }
 
-    public void setId(int Id) {
-        this.Id = Id;
-    }
+  public void setId(int i) {
+    this.ID = i;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public byte[] toByteArray() throws Exception {
+    ByteArrayOutputStream ba_out = new ByteArrayOutputStream();
+    DataOutputStream dos = new DataOutputStream(ba_out);
+    dos.writeInt(this.ID);
+    dos.writeUTF(this.nome);
+    dos.writeUTF(this.email);
+    return ba_out.toByteArray();
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public void fromByteArray(byte[] ba) throws Exception {
+    ByteArrayInputStream ba_in = new ByteArrayInputStream(ba);
+    DataInputStream dis = new DataInputStream(ba_in);
+    this.ID = dis.readInt();
+    this.nome = dis.readUTF();
+    this.email = dis.readUTF();
+  }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public byte[] toByteArray() throws Exception {
-        ByteArrayOutputStream ba_out = new ByteArrayOutputStream();
-        DataOutputStream dos = new DataOutputStream(ba_out);
-        dos.writeInt(this.Id);
-        dos.writeUTF(this.nome);
-        dos.writeUTF(this.email);
-        return ba_out.toByteArray();
-    }
-
-    public void fromByteArray(byte[] ba) throws Exception{
-        ByteArrayInputStream ba_in = new ByteArrayInputStream(ba);
-        DataInputStream dis = new DataInputStream(ba_in);
-        this.Id = dis.readInt();
-        this.nome = dis.readUTF();
-        this.email = dis.readUTF();
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "ID=" + Id +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
+  public String toString() {
+    return "\nID: " + this.ID +
+        "\nNome: " + this.nome +
+        "\nE-mail: " + this.email;
+  }
 }
