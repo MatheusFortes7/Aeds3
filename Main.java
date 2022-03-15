@@ -26,7 +26,7 @@ public class Main {
           (new entidades.livros.InteracoesLivros()).menuLivros();
           break;
         case 2:
-          // menu clientes;
+          (new entidades.clientes.InteracoesClientes()).menuClientes();
           break;
         case 0:
           break;
