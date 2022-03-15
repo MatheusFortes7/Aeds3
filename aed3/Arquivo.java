@@ -72,7 +72,17 @@ public class Arquivo<T extends Registro> {
     return false;
   };
 
-  public boolean delete(int id) {
+  public boolean delete(int id) throws Exception{
+    arquivo.seek(0);
+    int ultimoId = arquivo.readInt();
+    if(ultimoId > id)
+      System.out.println("Id nao existente");
+
+    //colocar o endereço do id procurado na variável abaixo
+    //int pos = 
+    //arquivo.seek(pos);
+    
+
     return false;
   };
 
