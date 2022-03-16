@@ -74,7 +74,8 @@ public class Arquivo<T extends Registro> {
 
   public boolean delete(int id) throws Exception{
     
-    arquivo.seek(0);
+    try {
+      arquivo.seek(0);
     int ultimoId = arquivo.readInt();
     if(ultimoId > id)
       System.out.println("Id nao existente");
@@ -90,6 +91,10 @@ public class Arquivo<T extends Registro> {
     arquivo.seek(0);
     arquivo.writeInt(novoIndice);
 
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.out.println("Erro ao deletar!");
+    }
     return false;
   };
 
