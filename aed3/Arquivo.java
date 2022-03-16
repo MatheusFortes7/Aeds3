@@ -73,15 +73,22 @@ public class Arquivo<T extends Registro> {
   };
 
   public boolean delete(int id) throws Exception{
+    
     arquivo.seek(0);
     int ultimoId = arquivo.readInt();
     if(ultimoId > id)
       System.out.println("Id nao existente");
 
     //colocar o endereço do id procurado na variável abaixo
-    //int pos = 
-    //arquivo.seek(pos);
+    ParIDEndereco p = indiceDireto.read(id);
+    arquivo.seek(p.getEndereco());
+    arquivo.writeByte('*');
     
+    arquivo.seek(0);
+    int indiceAntigo = arquivo.readInt();
+    int novoIndice = indiceAntigo - 1;
+    arquivo.seek(0);
+    arquivo.writeInt(novoIndice);
 
     return false;
   };
