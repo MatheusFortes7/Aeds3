@@ -1,9 +1,9 @@
-package entidades.clientes;
+package TP01.entidades.clientes;
 
 import java.io.File;
 import java.util.Scanner;
 
-import aed3.Arquivo;
+import TP01.aed3.Arquivo;
 
 public class InteracoesClientes {
 

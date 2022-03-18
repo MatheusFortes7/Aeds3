@@ -1,4 +1,4 @@
-package aed3;
+package TP01.aed3;
 /*
 
 Esta classe representa um PAR CHAVE VALOR para uma entidade qualquer. 

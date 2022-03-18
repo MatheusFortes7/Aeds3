@@ -1,4 +1,4 @@
-package aed3;
+package TP01.aed3;
 
 public interface Registro {
   public void setID(int id);

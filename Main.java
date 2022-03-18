@@ -23,10 +23,10 @@ public class Main {
 
       switch (opcao) {
         case 1:
-          (new entidades.livros.InteracoesLivros()).menuLivros();
+          (new TP01.entidades.livros.InteracoesLivros()).menuLivros();
           break;
         case 2:
-          (new entidades.clientes.InteracoesClientes()).menuClientes();
+          (new TP01.entidades.clientes.InteracoesClientes()).menuClientes();
           break;
         case 0:
           break;
