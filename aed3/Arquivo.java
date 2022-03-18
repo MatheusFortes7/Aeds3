@@ -1,4 +1,4 @@
-package TP01.aed3;
+package aed3;
 
 import java.io.RandomAccessFile;
 import java.lang.reflect.Constructor;
