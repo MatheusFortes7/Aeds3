@@ -81,7 +81,7 @@ public class InteracoesLivros {
           // alterarLivro();
           break;
         case 4:
-          // excluirLivro();
+          excluirLivro();
           break;
         case 0:
           break;
@@ -89,6 +89,27 @@ public class InteracoesLivros {
           System.out.println("Opção inválida");
       }
     } while (opcao != 0);
+  }
+
+  private void excluirLivro() {
+    Livro deleteLivro;
+    try {
+      buscarLivro();
+      System.out.println("Confirme o id do livro que você deseja excluir");
+      int idDelete = Integer.valueOf(console.nextLine());
+      System.out.println("Este e o livro que voce deseja exlcuir? (S/N)");
+      String resp = console.nextLine();
+      if(resp == "S"){
+        arqLivros.delete(idDelete);
+      } else if (resp == "N"){
+        excluirLivro();
+      } else{
+        System.out.println("Resposta inválida");
+        menuLivros();
+      }
+    } catch (Exception e) {
+      //TODO: handle exception
+    }
   }
 
   public void incluirLivro() {
