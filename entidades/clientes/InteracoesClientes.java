@@ -125,9 +125,9 @@ public class InteracoesClientes {
     private void excluirCliente() {
       try {
         buscarCliente();
-        System.out.println("Confirme o id do cliente que você deseja excluir");
+        System.out.println("\nConfirme o id do cliente que você deseja excluir");
         int idDelete = Integer.valueOf(console.nextLine());
-        System.out.println("Este e o cliente que voce deseja exlcuir? (S/N)");
+        System.out.println("\nEste e o cliente que voce deseja exlcuir? (S/N)");
         String resp = console.nextLine();
         if(resp == "S"){
           arqClientes.delete(idDelete);
