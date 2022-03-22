@@ -92,7 +92,6 @@ public class InteracoesLivros {
   }
 
   private void excluirLivro() {
-    Livro deleteLivro;
     try {
       buscarLivro();
       System.out.println("Confirme o id do livro que você deseja excluir");
@@ -108,7 +107,8 @@ public class InteracoesLivros {
         menuLivros();
       }
     } catch (Exception e) {
-      //TODO: handle exception
+      System.out.println("Nao foi possivel a remoção do livro.");
+      e.printStackTrace();
     }
   }
 
