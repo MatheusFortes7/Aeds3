@@ -91,27 +91,6 @@ public class InteracoesLivros {
     } while (opcao != 0);
   }
 
-  private void excluirLivro() {
-    try {
-      buscarLivro();
-      System.out.println("Confirme o id do livro que você deseja excluir");
-      int idDelete = Integer.valueOf(console.nextLine());
-      System.out.println("Este e o livro que voce deseja exlcuir? (S/N)");
-      String resp = console.nextLine();
-      if(resp == "S"){
-        arqLivros.delete(idDelete);
-      } else if (resp == "N"){
-        excluirLivro();
-      } else{
-        System.out.println("Resposta inválida");
-        menuLivros();
-      }
-    } catch (Exception e) {
-      System.out.println("Nao foi possivel a remoção do livro.");
-      e.printStackTrace();
-    }
-  }
-
   public void incluirLivro() {
     Livro novoLivro;
     try {
@@ -154,4 +133,24 @@ public class InteracoesLivros {
 
   }
 
+  private void excluirLivro() {
+    try {
+      buscarLivro();
+      System.out.println("Confirme o id do livro que você deseja excluir");
+      int idDelete = Integer.valueOf(console.nextLine());
+      System.out.println("Este e o livro que voce deseja exlcuir? (S/N)");
+      String resp = console.nextLine();
+      if(resp == "S"){
+        arqLivros.delete(idDelete);
+      } else if (resp == "N"){
+        excluirLivro();
+      } else{
+        System.out.println("Resposta inválida");
+        menuLivros();
+      }
+    } catch (Exception e) {
+      System.out.println("Nao foi possivel a remoção do livro.");
+      e.printStackTrace();
+    }
+  }
 }
