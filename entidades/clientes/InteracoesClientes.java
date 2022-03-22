@@ -61,16 +61,16 @@ public class InteracoesClientes {
     
           switch (opcao) {
             case 1:
-              //incluirCliente();
+              incluirCliente();
               break;
             case 2:
-              //buscarCliente();
+              buscarCliente();
               break;
             case 3:
               // alterarCliente();
               break;
             case 4:
-              // excluirCliente();
+              excluirCliente();
               break;
             case 0:
               break;
@@ -79,5 +79,69 @@ public class InteracoesClientes {
           }
         } while (opcao != 0);
     }
+
+    private void incluirCliente() {
+      Cliente novoCliente;
+    try {
+      novoCliente = leCliente();
+    } catch (Exception e) {
+      System.out.println("Dados inválidos");
+      return;
+    }
+
+    int id;
+    try {
+      id = arqClientes.create(novoCliente);
+    } catch (Exception e) {
+      System.out.println("Cliente não pode ser criado");
+      e.printStackTrace();
+      return;
+    }
+
+    System.out.println("\nCliente criado com o ID " + id);
+
+    }
+
+    private void buscarCliente() {
+      int id;
+      System.out.print("\nID do Cliente: ");
+      try {
+        id = Integer.valueOf(console.nextLine());
+      } catch (NumberFormatException e) {
+        System.out.println("ID inválido.");
+        return;
+      }
+  
+      try {
+        Cliente c = arqClientes.read(id);
+        mostraCLiente(c);
+      } catch (Exception e) {
+        System.out.println("Erro no acesso ao arquivo");
+        e.printStackTrace();
+      }
+  
+    }
+    
+    private void excluirCliente() {
+      try {
+        buscarCliente();
+        System.out.println("Confirme o id do cliente que você deseja excluir");
+        int idDelete = Integer.valueOf(console.nextLine());
+        System.out.println("Este e o cliente que voce deseja exlcuir? (S/N)");
+        String resp = console.nextLine();
+        if(resp == "S"){
+          arqClientes.delete(idDelete);
+        } else if (resp == "N"){
+          excluirCliente();
+        } else{
+          System.out.println("Resposta inválida");
+          menuClientes();
+        }
+      } catch (Exception e) {
+        System.out.println("Nao foi possivel a remoção do livro.");
+        e.printStackTrace();
+      }
+    }
+
 
 }
