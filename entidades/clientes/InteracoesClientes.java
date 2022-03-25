@@ -127,11 +127,14 @@ public class InteracoesClientes {
         buscarCliente();
         System.out.println("\nConfirme o id do cliente que você deseja excluir");
         int idDelete = Integer.valueOf(console.nextLine());
-        System.out.println("\nEste e o cliente que voce deseja exlcuir? (S/N)");
+        System.out.println("\nEste e o cliente que voce deseja exlcuir? (Sim/Nao)");
         String resp = console.nextLine();
-        if(resp == "S"){
+        
+        //!ERRO AQUI
+
+        if(resp == "Sim"){
           arqClientes.delete(idDelete);
-        } else if (resp == "N"){
+        } else if (resp == "Nao"){
           excluirCliente();
         } else{
           System.out.println("Resposta inválida");
