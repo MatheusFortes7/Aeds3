@@ -68,7 +68,31 @@ public class Arquivo<T extends Registro> {
     return null;
   };
 
-  public boolean update(T novaEntidade) {
+  public boolean update(T novaEntidade) throws Exception {
+    byte[] registro;
+    byte[] novoRegistro;
+    char lapide;
+    int TAM;
+    
+    int id = novaEntidade.getID();
+    ParIDEndereco p = indiceDireto.read(id);
+    if(p == null){
+      System.out.println("Id nao encontrado");
+      return false;
+    }
+    long pos = p.getEndereco();
+    arquivo.seek(pos);
+    lapide = arquivo.readChar();
+    TAM = arquivo.readInt();
+    registro = new byte[TAM];
+
+    arquivo.read(registro);
+
+    if(lapide != '*'){
+      
+    }
+
+
     return false;
   };
 
