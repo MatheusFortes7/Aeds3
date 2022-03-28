@@ -45,12 +45,14 @@ public class InteracoesClientes {
     public void menuClientes() throws Exception {
         int opcao;
         do {
+          System.out.println("---------------------------------");
           System.out.println("\nMENU DE CLIENTES");
           System.out.println("\n1) Incluir cliente");
           System.out.println("2) Buscar cliente");
           System.out.println("3) Alterar cliente");
           System.out.println("4) Excluir cliente");
           System.out.println("\n0) Retornar ao menu anterior");
+          System.out.println("---------------------------------");
     
           System.out.print("\nOpção: ");
           try {
@@ -104,6 +106,7 @@ public class InteracoesClientes {
 
     private void buscarCliente() {
       int id;
+      System.out.println("---------------------------------");
       System.out.print("\nID do Cliente: ");
       try {
         id = Integer.valueOf(console.nextLine());

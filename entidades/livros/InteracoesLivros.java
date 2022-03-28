@@ -56,12 +56,14 @@ public class InteracoesLivros {
   public void menuLivros() {
     int opcao;
     do {
+      System.out.println("---------------------------------");
       System.out.println("\nMENU DE LIVROS");
       System.out.println("\n1) Incluir livro");
       System.out.println("2) Buscar livro");
       System.out.println("3) Alterar livro");
       System.out.println("4) Excluir livro");
       System.out.println("\n0) Retornar ao menu anterior");
+      System.out.println("---------------------------------");
 
       System.out.print("\nOpção: ");
       try {
@@ -115,6 +117,7 @@ public class InteracoesLivros {
 
   public void buscarLivro() {
     int id;
+    System.out.println("---------------------------------");
     System.out.print("\nID do Livro: ");
     try {
       id = Integer.valueOf(console.nextLine());
