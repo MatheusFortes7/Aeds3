@@ -90,7 +90,7 @@ public class Arquivo<T extends Registro> {
     int novoIndice = indiceAntigo - 1;
     arquivo.seek(0);
     arquivo.writeInt(novoIndice);
-
+    indiceDireto.delete(id);
     } catch (Exception e) {
       e.printStackTrace();
       System.out.println("Erro ao deletar!");

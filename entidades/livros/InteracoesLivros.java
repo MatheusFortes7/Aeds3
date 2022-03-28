@@ -138,16 +138,7 @@ public class InteracoesLivros {
       buscarLivro();
       System.out.println("\nConfirme o id do livro que você deseja excluir");
       int idDelete = Integer.valueOf(console.nextLine());
-      System.out.println("\nEste e o livro que voce deseja exlcuir? (S/N)");
-      String resp = console.nextLine();
-      if(resp == "S"){
-        arqLivros.delete(idDelete);
-      } else if (resp == "N"){
-        excluirLivro();
-      } else{
-        System.out.println("Resposta inválida");
-        menuLivros();
-      }
+      arqLivros.delete(idDelete);
     } catch (Exception e) {
       System.out.println("Nao foi possivel a remoção do livro.");
       e.printStackTrace();
