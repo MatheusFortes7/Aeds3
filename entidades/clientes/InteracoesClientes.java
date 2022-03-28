@@ -42,7 +42,7 @@ public class InteracoesClientes {
             "\nEmail: " + l.getEmail());
     }
 
-    public void menuClientes() {
+    public void menuClientes() throws Exception {
         int opcao;
         do {
           System.out.println("\nMENU DE CLIENTES");
@@ -67,7 +67,7 @@ public class InteracoesClientes {
               buscarCliente();
               break;
             case 3:
-              // alterarCliente();
+              alterarCliente();
               break;
             case 4:
               excluirCliente();
@@ -134,5 +134,18 @@ public class InteracoesClientes {
       }
     }
 
+    private void alterarCliente() throws Exception {
+      Cliente c = new Cliente();
+      buscarCliente();
+      System.out.println("Entre com o id do cliente que voce deseja alterar");
+      int idAlt = Integer.valueOf(console.nextLine());
+      System.out.println("Entre com o novo nome do cliente:");
+      String novoNome = console.nextLine();
+      System.out.println("Agora entre com o novo email do cliente:");
+      String novoEmail = console.nextLine();
+      c.setEmail(novoEmail);
+      c.setNome(novoNome);
+      arqClientes.update(c);
+    }
 
 }
