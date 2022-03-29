@@ -71,8 +71,8 @@ public class Arquivo<T extends Registro> {
   public boolean update(T novaEntidade) throws Exception {
     byte[] registro;
     byte[] novoRegistro;
-    char lapide;
-    int TAM;
+    byte lapide;
+    short TAM;
     
     int id = novaEntidade.getID();
     ParIDEndereco p = indiceDireto.read(id);
@@ -82,19 +82,31 @@ public class Arquivo<T extends Registro> {
     }
     long pos = p.getEndereco();
     arquivo.seek(pos);
-    lapide = arquivo.readChar();
-    TAM = arquivo.readInt();
+    lapide = arquivo.readByte();
+    TAM = arquivo.readShort();
     registro = new byte[TAM];
 
     arquivo.read(registro);
 
+    novoRegistro = novaEntidade.toByteArray();
+
     if(lapide != '*'){
-      
+      if(novoRegistro.length <= registro.length){
+        arquivo.seek(pos + 3);
+        arquivo.write(novoRegistro);
+      } else {
+        arquivo.seek(pos);
+        arquivo.writeByte('*');
+        arquivo.seek(arquivo.length());
+        pos = arquivo.length();
+        arquivo.writeByte('#');
+        arquivo.writeShort(novoRegistro.length);
+        arquivo.write(novoRegistro);
+        indiceDireto.update(new ParIDEndereco(id, pos));
+      }
     }
-
-
     return false;
-  };
+  }
 
   public boolean delete(int id) throws Exception{
     
@@ -109,11 +121,6 @@ public class Arquivo<T extends Registro> {
     arquivo.seek(p.getEndereco());
     arquivo.writeByte('*');
     
-    arquivo.seek(0);
-    int indiceAntigo = arquivo.readInt();
-    int novoIndice = indiceAntigo - 1;
-    arquivo.seek(0);
-    arquivo.writeInt(novoIndice);
     indiceDireto.delete(id);
     } catch (Exception e) {
       e.printStackTrace();

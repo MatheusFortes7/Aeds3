@@ -148,6 +148,7 @@ public class InteracoesClientes {
       String novoEmail = console.nextLine();
       c.setEmail(novoEmail);
       c.setNome(novoNome);
+      c.setID(idAlt);
       arqClientes.update(c);
       System.out.println("Cliente atualizado sucesso!");
     }
