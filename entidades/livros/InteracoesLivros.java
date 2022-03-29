@@ -53,7 +53,7 @@ public class InteracoesLivros {
             "\nData de lançamento: " + l.getLancamento());
   }
 
-  public void menuLivros() {
+  public void menuLivros() throws Exception {
     int opcao;
     do {
       System.out.println("---------------------------------");
@@ -80,7 +80,7 @@ public class InteracoesLivros {
           buscarLivro();
           break;
         case 3:
-          // alterarLivro();
+          alterarLivro();
           break;
         case 4:
           excluirLivro();
@@ -92,6 +92,8 @@ public class InteracoesLivros {
       }
     } while (opcao != 0);
   }
+
+  
 
   public void incluirLivro() {
     Livro novoLivro;
@@ -134,6 +136,27 @@ public class InteracoesLivros {
       e.printStackTrace();
     }
 
+  }
+
+  private void alterarLivro() throws Exception {
+    Livro c = new Livro();
+      System.out.println("Entre com o id do cliente que voce deseja alterar");
+      int idAlt = Integer.valueOf(console.nextLine());
+      System.out.println("Entre com o novo titulo do livro:");
+      String novoTitulo = console.nextLine();
+      System.out.println("Agora entre com o novo autor do livro:");
+      String novoAutor = console.nextLine();
+      System.out.println("Entre com o novo preco do livro: ");
+      float novoPreco = Float.valueOf(console.nextLine());
+      System.out.println("Entre com a data de lancamento do livro: (dd/mm/aaaa)");
+      long novoAno = Long.valueOf(console.nextLine());
+      c.setTitulo(novoTitulo);
+      c.setAutor(novoAutor);
+      c.setID(idAlt);
+      c.setPreco(novoPreco);
+      c.setLancamento(novoAno);
+      arqLivros.update(c);
+      System.out.println("Cliente atualizado sucesso!");
   }
 
   private void excluirLivro() {
