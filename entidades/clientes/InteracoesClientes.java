@@ -149,6 +149,7 @@ public class InteracoesClientes {
       c.setEmail(novoEmail);
       c.setNome(novoNome);
       arqClientes.update(c);
+      System.out.println("Cliente atualizado sucesso!");
     }
 
 }
