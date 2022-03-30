@@ -1,0 +1,31 @@
+- O trabalho possui um índice direto implementado com a tabela hash extensível?
+
+Sim, possui.
+
+- A operação de inclusão insere um novo registro no fim do arquivo e no índice e retorna o ID desse registro?
+
+Sim, faz a inclusao e depois retorna o id do registro adicionado.
+
+- A operação de busca retorna os dados do registro, após localizá-lo por meio do índice direto?
+
+Sim.
+
+- A operação de alteração altera os dados do registro e trata corretamente as reduções e aumentos no espaço do registro?
+
+Sim, se o registro foi do mesmo tamanho ou igual ele continua no mesmo lugar, mesmo deixando lixo, se ele for maior ele da como deletado o registro antigo e insere o novo no fim do arquivo.
+
+- A operação de exclusão marca o registro como excluído e o remove do índice direto?
+
+Sim.
+
+- O trabalho está funcionando corretamente?
+
+Sim.
+
+- O trabalho está completo?
+
+Sim, esta completo.
+
+- O trabalho é original e não a cópia de um trabalho de um colega?
+
+Sim, trabalho original.
