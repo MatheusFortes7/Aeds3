@@ -1,10 +1,10 @@
-package entidades.livros;
-
-import aed3.Arquivo;
+package TP01.entidades.livros;
 
 import java.io.File;
 import java.util.Calendar;
 import java.util.Scanner;
+
+import TP01.aed3.Arquivo;
 
 public class InteracoesLivros {
 

@@ -1,4 +1,4 @@
-package entidades.livros;
+package TP01.entidades.livros;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -6,7 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.Date;
 
-import aed3.Registro;
+import TP01.aed3.Registro;
 
 public class Livro implements Registro { // Classe == TIPO DE ENTIDADE
 

@@ -1,11 +1,11 @@
-package entidades.clientes;
+package TP01.entidades.clientes;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
-import aed3.Registro;
+import TP01.aed3.Registro;
 
 public class Cliente implements Registro {
 
