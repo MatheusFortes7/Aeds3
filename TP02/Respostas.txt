@@ -1,0 +1,8 @@
+- O trabalho possui um índice indireto implementado com a tabela hash extensível? SIM
+- A operação de inclusão atualiza o índice indireto? SIM
+- A operação de busca é feita a partir do índice indireto? SIM
+- A operação de alteração atualiza o índice indireto? SIM
+- A operação de exclusão atualiza o índice indireto? A EXCLUSAO NAO FUNCIONA
+- O trabalho está funcionando corretamente? NAO TOTALMENTE
+- O trabalho está completo? NAO
+- O trabalho é original e não a cópia de um trabalho de um colega? SIM
